@@ -1,6 +1,12 @@
 #include "../header_files/GameLogic.h"
 #include <iostream>
+#include <cctype>
+#include <string>
 using namespace std;
+
+
+Game::Game() : dice(5){}
+
 
 
 
@@ -25,4 +31,3 @@ vector<int> Game::getDiceValues()const{
   }
   return values;
 }
-

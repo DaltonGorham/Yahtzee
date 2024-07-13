@@ -12,10 +12,17 @@ int main(){
 
   srand(time(0));
 
-  Game yahtzee;
   Console ui;
+  Game yahtzee;
   Die die;
 
+
+  ui.welcomeMessage();
+
+
+
+
+  //start first round
   yahtzee.rollAllDice();
 
   vector<int> diceValues = yahtzee.getDiceValues();
@@ -23,6 +30,22 @@ int main(){
   ui.displayDice(diceValues);
 
   
+
+  //asks for reroll and display new value for dice.
+
+          //two more rerolls left
+  for (int i = 0; i < 2; i++){
+    if (ui.askReroll()){
+      vector<int> indices = ui.getRerollIndices();
+      yahtzee.rerollDice(indices);
+      diceValues = yahtzee.getDiceValues();
+      ui.displayDice(diceValues);
+    } 
+    else break;
+  }
+
+
+
 
 
 

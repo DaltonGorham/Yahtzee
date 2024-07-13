@@ -9,6 +9,9 @@ using namespace std;
 class Console{
   public:
     void displayDice(vector<int> diceValues)const;
+    vector<int> getRerollIndices()const;
+    void welcomeMessage();
+    bool askReroll();
 };
 
 

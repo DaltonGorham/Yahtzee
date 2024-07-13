@@ -7,7 +7,7 @@ class Game{
   private: 
     vector<Die> dice;
   public:
-    Game() : dice(5) {};
+    Game();
     vector<int> getDiceValues()const;
     vector<int> calculateScores()const;
     void rollAllDice();
