@@ -9,18 +9,21 @@ using namespace std;
 
 
 int main(){
-  // Seed for random faceValue
-  srand(time(0));
+
+  srand(time(0));   // Seed for random faceValue
   
   Console ui;
   Game yahtzee;
   Die die;
 
 
+  ui.clearScreen(); // Clear previous round
+
   ui.welcomeMessage();
 
-   //start first round
-  yahtzee.setRoll(1);
+
+  // start first round
+  yahtzee.setRoll(1);  
   ui.displayRoll(yahtzee.getRoll());
 
   yahtzee.rollAllDice();
@@ -43,6 +46,12 @@ int main(){
     } 
     else break;  // Exit the loop if no reroll is desired
   }
+
+    ui.clearScreen();
+    ui.currentDieMessage();
+    ui.displayDice(diceValues);
+    ui.displayScoreCard();
+
 
 
 
