@@ -31,11 +31,11 @@ vector<int> Game::getDiceValues()const{
 }
 
 
-void Game::setRound(int index){
-  round = index;
+void Game::setRoll(int index){
+  roll = index;
 }
 
-int Game::getRound()const{
-  return round;
+int Game::getRoll()const{
+  return roll;
 }
 

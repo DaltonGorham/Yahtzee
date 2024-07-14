@@ -6,13 +6,13 @@
 class Game{
   private: 
     vector<Die> dice; 
-    int round;
+    int roll;
   public:
     Game(); // Constructor to initialize the game with a certain number of dice
     vector<int> getDiceValues()const;
     vector<int> calculateScores()const;
-    void setRound(int index);
-    int getRound()const;
+    void setRoll(int index);
+    int getRoll()const;
     void rollAllDice();
     void rerollDice(vector<int> indices);
 };

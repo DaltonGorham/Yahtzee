@@ -20,8 +20,8 @@ int main(){
   ui.welcomeMessage();
 
    //start first round
-  yahtzee.setRound(1);
-  ui.displayRound(yahtzee.getRound());
+  yahtzee.setRoll(1);
+  ui.displayRoll(yahtzee.getRoll());
 
   yahtzee.rollAllDice();
 
@@ -33,12 +33,12 @@ int main(){
   // Ask for reroll and display new value for dice
   for (int i = 0; i < 2; i++){   
     if (ui.askReroll()){
-      yahtzee.setRound(i + 2);
+      yahtzee.setRoll(i + 2);
       vector<int> indices = ui.getRerollIndices(); // get desired reroll die
       yahtzee.rerollDice(indices);  
       diceValues = yahtzee.getDiceValues(); // Get the new values of the die
       ui.clearScreen();
-      ui.displayRound(yahtzee.getRound());
+      ui.displayRoll(yahtzee.getRoll());
       ui.displayDice(diceValues);  // Display the new die values
     } 
     else break;  // Exit the loop if no reroll is desired

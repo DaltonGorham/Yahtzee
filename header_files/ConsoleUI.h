@@ -12,7 +12,7 @@ class Console{
     vector<int> getRerollIndices()const;
     void welcomeMessage();
     bool askReroll();
-    void displayRound(int index);
+    void displayRoll(int index);
     void clearScreen();
 };
 
