@@ -13,7 +13,6 @@ class Console{
   public:
     Console();
     void displayDice(vector<int> diceValues)const;
-    vector<int> getRerollIndices()const;
     void welcomeMessage();
     bool askReroll();
     void displayRoll(int index);

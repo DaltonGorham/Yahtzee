@@ -37,7 +37,7 @@ int main(){
   for (int i = 0; i < 2; i++){   
     if (ui.askReroll()){
       yahtzee.setRoll(i + 2);
-      vector<int> indices = ui.getRerollIndices(); // get desired reroll die
+      vector<int> indices = yahtzee.getRerollIndices(); // get desired reroll die
       yahtzee.rerollDice(indices);  
       diceValues = yahtzee.getDiceValues(); // Get the new values of the die
       ui.clearScreen();

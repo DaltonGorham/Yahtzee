@@ -10,6 +10,7 @@ class Game{
   public:
     Game(); // Constructor to initialize the game with a certain number of dice
     vector<int> getDiceValues()const;
+    vector<int> getRerollIndices()const;
     vector<int> calculateScores()const;
     void setRoll(int index);
     int getRoll()const;

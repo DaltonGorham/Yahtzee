@@ -43,6 +43,7 @@ void Console::displayDice(vector<int> diceValues)const{
   cout << endl;
 }
 
+
 bool Console::askReroll(){
   char choice;
   do {
@@ -56,30 +57,10 @@ bool Console::askReroll(){
 }
 
 
-
-vector<int> Console::getRerollIndices()const{
-  vector<int> indices;
-  int input;
-  
-  while (true) {
-    cout << "Enter the die you wish to reroll (1-5), or 0 to finish" << endl;
-    cin >> input;
-    if (input == 0) break;   // Exit the loop if 0 is entered
-    if (input >= 1 && input <= 5){
-      indices.push_back(input - 1); // Back to 0-based-index
-    } else {
-      cout << "Invalid Die Number." << endl;
-    }
-    if (indices.size() == 5){ // Exit if all 5 die have been rerolled
-      break;
-    }
-  }
-  return indices; // Return the list of indices to reroll
-}
-
 void Console::displayRoll(int index){
   cout << "Roll " << index << endl;
 }
+
 
 
 void Console::clearScreen(){
