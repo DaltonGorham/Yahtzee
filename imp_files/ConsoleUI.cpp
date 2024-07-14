@@ -8,7 +8,7 @@ using namespace std;
 void Console::welcomeMessage() {
   cout << "Welcome to Yahtzee!" << endl;
   cout << "Press Enter to Continue" << endl;
-  cin.get();
+  cin.get();   // Wait for the user to press Enter
 }
 
 
@@ -25,7 +25,7 @@ bool Console::askReroll(){
   cout << "Do you wish to reroll any die? (Y/N)" << endl;
   cin >> choice;
   cin.ignore();
-  return choice == 'y' || choice == 'Y';
+  return choice == 'y' || choice == 'Y'; // Returns true if the user wants to reroll
   
 }
 
@@ -38,17 +38,21 @@ vector<int> Console::getRerollIndices()const{
   while (true) {
     cout << "Enter the die you wish to reroll (1-5), or 0 to finish" << endl;
     cin >> input;
-    if (input == 0) break;
+    if (input == 0) break;   // Exit the loop if 0 is entered
     if (input >= 1 && input <= 5){
-      indices.push_back(input - 1); //Back to 0-based-index
+      indices.push_back(input - 1); // Back to 0-based-index
     } else {
       cout << "Invalid Die Number. PLease enter a number 1-5, or 0 to finish. " << endl;
     }
   }
-  return indices;
-  
-
-
-
+  return indices; // Return the list of indices to reroll
 }
 
+void Console::displayRound(int index){
+  cout << "Round " << index << endl;
+}
+
+
+void Console::clearScreen(){
+  cout << "\033[2J\033[1;1H";
+}

@@ -9,9 +9,9 @@ using namespace std;
 
 
 int main(){
-
+  // Seed for random faceValue
   srand(time(0));
-
+  
   Console ui;
   Game yahtzee;
   Die die;
@@ -19,10 +19,10 @@ int main(){
 
   ui.welcomeMessage();
 
+   //start first round
+  yahtzee.setRound(1);
+  ui.displayRound(yahtzee.getRound());
 
-
-
-  //start first round
   yahtzee.rollAllDice();
 
   vector<int> diceValues = yahtzee.getDiceValues();
@@ -30,21 +30,19 @@ int main(){
   ui.displayDice(diceValues);
 
   
-
-  //asks for reroll and display new value for dice.
-
-          //two more rerolls left
-  for (int i = 0; i < 2; i++){
+  // Ask for reroll and display new value for dice
+  for (int i = 0; i < 2; i++){   
     if (ui.askReroll()){
-      vector<int> indices = ui.getRerollIndices();
-      yahtzee.rerollDice(indices);
-      diceValues = yahtzee.getDiceValues();
-      ui.displayDice(diceValues);
+      yahtzee.setRound(i + 2);
+      vector<int> indices = ui.getRerollIndices(); // get desired reroll die
+      yahtzee.rerollDice(indices);  
+      diceValues = yahtzee.getDiceValues(); // Get the new values of the die
+      ui.clearScreen();
+      ui.displayRound(yahtzee.getRound());
+      ui.displayDice(diceValues);  // Display the new die values
     } 
-    else break;
+    else break;  // Exit the loop if no reroll is desired
   }
-
-
 
 
 

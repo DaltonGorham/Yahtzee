@@ -2,7 +2,7 @@
 
 
 
-Die::Die():
+Die::Die(): // constructor that initializes each die with desired sides
 SIDES(6)
 {
   roll();
