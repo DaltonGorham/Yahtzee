@@ -1,4 +1,5 @@
 #include "../header_files/ConsoleUI.h"
+#include "../header_files/GameLogic.h"
 #include <iostream>
 #include <cctype>
 #include <string>
@@ -13,7 +14,7 @@ void Console::welcomeMessage() {
 }
 
 
-Console::Console(){
+Console::Console(){ // Constructor: Initializes Score Card
    upperSection = {
       "1.)  Aces",
       "2.)  Twos",
@@ -87,15 +88,57 @@ void Console::displayScoreCard(){
 
   cout << "UPPER SECTION:" << endl;
 
-
-  for (const string selection : upperSection){
+  for (string selection : upperSection){
     cout << selection << endl;
   }
 
   cout << endl << "LOWER SECTION:" << endl;
 
-
-  for (const string selection : lowerSection){
-  cout << selection << endl;
+  for (string selection : lowerSection){
+    cout << selection << endl;
   }
+
 }
+
+void Console::buffer(){
+  cout << endl << endl << "Press Enter to Continue";
+  cin.get();
+}
+
+void Console::displayRound(int round){
+  cout << "Round " << round << ": ";
+}
+
+int Console::scoreSelect(){
+  int number;
+  do {
+  cout << "Select a number to score in : ";
+  cin >> number;
+  } while(number < 1 && number > 13);
+
+  return number;
+
+}
+
+void Console::displayUpdateScoreCard(Game game){
+  cout << "SCORE CARD" << endl << endl;
+
+  cout << "UPPER SECTION:" << endl;
+
+  const vector<int> upperScores = game.getUpperScores();
+
+  for (int i = 0; i < upperSection.size(); i++) {
+      cout << upperSection[i] << " : " << upperScores[i] << endl;
+  }
+
+   cout << endl << "LOWER SECTION:" << endl;
+
+   const vector<int> lowerScores = game.getLowerScores();
+
+   for (int i = 0; i < lowerSection.size(); i++) {
+      cout << lowerSection[i] << " : " << lowerScores[i] << endl;
+   }
+
+
+}
+

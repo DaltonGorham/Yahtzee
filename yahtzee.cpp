@@ -10,7 +10,7 @@ using namespace std;
 
 int main(){
 
-  srand(time(0));   // Seed for random faceValue
+  srand(time(0));  // Seed for random faceValue
   
   Console ui;
   Game yahtzee;
@@ -20,6 +20,12 @@ int main(){
   ui.clearScreen(); // Clear previous round
 
   ui.welcomeMessage();
+  
+  
+  int count = 0;  // start of game
+  while(count < 13){
+  yahtzee.setRound(count + 1);
+  ui.displayRound(yahtzee.getRound());
 
 
   // start first round
@@ -31,6 +37,7 @@ int main(){
   vector<int> diceValues = yahtzee.getDiceValues();
 
   ui.displayDice(diceValues);
+
 
   
   // Ask for reroll and display new value for dice
@@ -50,9 +57,24 @@ int main(){
     ui.clearScreen();
     ui.currentDieMessage();
     ui.displayDice(diceValues);
-    ui.displayScoreCard();
+    if (count == 0){
+      ui.displayScoreCard();
+    } else {
+      ui.displayUpdateScoreCard(yahtzee);
+    }
 
+    int category = ui.scoreSelect();
+    yahtzee.updateScore(category, 5);
+    ui.clearScreen();
+    ui.displayUpdateScoreCard(yahtzee);
+    cin.ignore();
+    ui.buffer();
+    ui.clearScreen();
+    count++;  // increment count for round
 
+  }
+  
+  
 
 
 

@@ -6,12 +6,12 @@
 using namespace std;
 
 
-Game::Game() : dice(5){}  // Initialize the game with 5 dice
+Game::Game() : dice(5), upperScores(6), lowerScores(7){}  // Initialize the game 
 
 
 void Game::rollAllDice(){ // Roll each die
-  for (Die die : dice){  
-    die.roll();
+  for (int i = 0; i < dice.size(); i++){
+    dice[i].roll();
   }
 }
 
@@ -62,3 +62,29 @@ int Game::getRoll()const{
   return roll;
 }
 
+int Game::getRound(){
+  return round;
+}
+
+void Game::setRound(int r){
+  round = r;
+}
+
+
+vector<int> Game::getUpperScores()const{
+  return upperScores;
+}
+
+vector<int> Game::getLowerScores()const{
+  return lowerScores;
+}
+
+void Game::updateScore(int category, int points){
+  if (category >= 1 && category <= 6){
+    upperScores[category - 1] = points;
+  } else if (category >= 7 && category <= 13){
+    lowerScores[category - 7] = points;
+  } else {
+    cout << "Invalid Category";
+  }
+}
