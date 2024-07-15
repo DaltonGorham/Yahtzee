@@ -1,4 +1,5 @@
 #include "../header_files/GameLogic.h"
+#include "../header_files/ConsoleUI.h"
 #include <iostream>
 #include <cctype>
 #include <string>
@@ -18,15 +19,16 @@ void Game::rollAllDice(){ // Roll each die
 vector<int> Game::getRerollIndices()const{
   vector<int> indices;
   int input;
+  Console ui;
   
   while (true) {
-    cout << "Enter the die you wish to reroll (1-5), or 0 to finish" << endl;
+    ui.displayDieSelection();
     cin >> input;
     if (input == 0) break;   // Exit the loop if 0 is entered
     if (input >= 1 && input <= 5){
       indices.push_back(input - 1); // Back to 0-based-index
     } else {
-      cout << "Invalid Die Number." << endl;
+      ui.displayInvalidDie();
     }
     if (indices.size() == 5){ // Exit if all 5 die have been rerolled
       break;

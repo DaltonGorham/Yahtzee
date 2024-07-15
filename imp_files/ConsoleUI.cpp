@@ -62,17 +62,24 @@ void Console::displayRoll(int index){
 }
 
 
+void Console::displayDieSelection(){
+  cout << "Enter the die you wish to reroll (1-5), or 0 to finish" << endl;
+}
+
+
+void Console::displayInvalidDie(){
+  cout << "Invalid Die Number." << endl;
+}
+
 
 void Console::clearScreen(){
   cout << "\033[2J\033[1;1H";
 }
 
 
-
 void Console::currentDieMessage(){
   cout << "What you have: " << endl;
 }
-
 
 
 void Console::displayScoreCard(){

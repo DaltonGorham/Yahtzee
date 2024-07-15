@@ -19,6 +19,8 @@ class Console{
     void clearScreen();
     void currentDieMessage();
     void displayScoreCard();
+    void displayDieSelection();
+    void displayInvalidDie();
 };
 
 
