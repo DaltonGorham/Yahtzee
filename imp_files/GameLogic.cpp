@@ -7,7 +7,11 @@
 using namespace std;
 
 
-Game::Game() : dice(5), upperScores(6), lowerScores(7), pickedCategories(0){} // Initialize the game 
+Game::Game() : dice(5), upperScores(6), lowerScores(7), pickedCategories(0) // Initialize the game 
+{
+  score = 0; 
+  total = 0;
+} 
 
 
 void Game::rollAllDice(){ // Roll each die
@@ -153,6 +157,7 @@ void Game:: playGame(){
     int category = ui.scoreSelect();
     score = yahtzee.calculateScores(category, diceValues);
     yahtzee.updateScore(category, score);
+    yahtzee.setTotalScore();
     ui.clearScreen();
     ui.displayUpdateScoreCard(yahtzee);
     cin.ignore();
@@ -162,7 +167,7 @@ void Game:: playGame(){
     count++;  // increment count for round
   }
   ui.clearScreen();
-  ui.displayFinalScore();
+  ui.displayFinalScore(yahtzee);
  
   
 }
@@ -295,6 +300,7 @@ int Game::calculateScores(int category, vector<int> diceValues){
 
   if (category == 12 && scoringFlags.Yahtzee){
     score = 50;
+
   }
 
 
@@ -319,6 +325,20 @@ bool Game::getPicked(int category){
   }
   return false;
 }
+
+
+void Game::setTotalScore(){
+  total = 0;
+  for (int Score : upperScores){
+    total += Score;
+  }
+  
+  for (int Score : lowerScores){
+    total += Score;
+  }
+
+}
+
 int Game::getTotalScore(){
   return total;
 }

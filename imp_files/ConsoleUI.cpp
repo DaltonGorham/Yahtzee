@@ -163,9 +163,8 @@ void Console::displayUpdateScoreCard(Game game){
 }
 
 
-void Console::displayFinalScore(){
-  Game game;
+void Console::displayFinalScore(Game game){
 
-  cout << "TOTAL SCORE: " << game.getTotalScore();
+  cout << endl << endl << "TOTAL SCORE: " << game.getTotalScore() << endl;
 }
 

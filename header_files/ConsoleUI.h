@@ -29,7 +29,7 @@ class Console{
     void buffer();
     vector<string> getUpperSection();
     vector<string> getLowerSection();
-    void displayFinalScore();
+    void displayFinalScore(Game game);
 };
 
 

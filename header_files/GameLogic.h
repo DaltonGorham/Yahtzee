@@ -23,7 +23,7 @@ class Game{
     vector<int> lowerScores;
     int round;
     int score;
-    int total = 0;
+    int total;
     ScoringFlags scoringFlags;
     void isThreeInARow(vector<int> diceValues);
     void isFourInARow(vector<int> diceValues);
@@ -51,6 +51,7 @@ class Game{
     void resetScore();
     void playGame();
     int getTotalScore();
+    void setTotalScore();
     bool getPicked(int category);
     void markPicked(int category);
 };
