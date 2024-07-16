@@ -27,6 +27,9 @@ class Console{
     void displayInvalidDie();
     int scoreSelect();
     void buffer();
+    vector<string> getUpperSection();
+    vector<string> getLowerSection();
+    void displayFinalScore();
 };
 
 

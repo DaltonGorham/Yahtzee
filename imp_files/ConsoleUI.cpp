@@ -111,14 +111,34 @@ void Console::displayRound(int round){
 
 int Console::scoreSelect(){
   int number;
-  do {
-  cout << "Select a number to score in : ";
-  cin >> number;
-  } while(number < 1 && number > 13);
+   do {
+      cout << "Select a number to score in: ";
+      cin >> number;
 
-  return number;
+      if (number < 1 || number > 13) {
+          cout << "Invalid input. Please enter a number between 1 and 13." << endl;
+      } else if (game.getPicked(number)) {
+          cout << "That category is already taken. Please choose another." << endl;
+      }
+
+  } while (number < 1 || number > 13 || game.getPicked(number));
+
+  game.markPicked(number);
+
+    return number;
 
 }
+
+
+ vector<string> Console::getUpperSection(){
+  return upperSection;
+ };
+
+
+ 
+ vector<string> Console::getLowerSection(){
+  return lowerSection;
+ };
 
 void Console::displayUpdateScoreCard(Game game){
   cout << "SCORE CARD" << endl << endl;
@@ -140,5 +160,12 @@ void Console::displayUpdateScoreCard(Game game){
    }
 
 
+}
+
+
+void Console::displayFinalScore(){
+  Game game;
+
+  cout << "TOTAL SCORE: " << game.getTotalScore();
 }
 
