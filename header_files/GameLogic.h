@@ -4,6 +4,17 @@
 #include <iostream>
 #include <vector>
 
+
+struct ScoringFlags {
+    bool pair = false;
+    bool threeInARow = false;
+    bool fourInARow = false;
+    bool Yahtzee = false;
+    bool smallStraight = false;
+    bool largeStraight = false;
+};
+
+
 class Game{
   private: 
     vector<Die> dice; 
@@ -13,12 +24,7 @@ class Game{
     int round;
     int score;
     int total = 0;
-    bool pair = false;
-    bool threeInARow = false;
-    bool fourInARow = false;
-    bool Yahtzee = false;
-    bool smallStraight = false;
-    bool largeStraight = false;
+    ScoringFlags scoringFlags;
     void isThreeInARow(vector<int> diceValues);
     void isFourInARow(vector<int> diceValues);
     void isYahtzee(vector<int> diceValues);

@@ -170,7 +170,7 @@ void Game:: playGame(){
 void Game::isThreeInARow(vector<int> diceValues){
  for (int i = 0; i < diceValues.size() - 2; i++){
     if (diceValues[i] == diceValues[i + 1] &&  diceValues[i + 1] == diceValues[i + 2]){
-      threeInARow = true;
+      scoringFlags.threeInARow = true;
     }
     
   }
@@ -180,7 +180,7 @@ void Game::isFourInARow(vector<int> diceValues){
   for (int i = 0; i < diceValues.size() - 1; i++){
     if (diceValues[i] == diceValues[i + 1] && diceValues[i+1] ==
      diceValues[i + 2] && diceValues[i + 2] == diceValues[i + 3]){
-    fourInARow = true;
+    scoringFlags.fourInARow = true;
   } 
   
 }
@@ -189,7 +189,7 @@ void Game::isFourInARow(vector<int> diceValues){
 void Game::isPair(vector<int> diceValues){
   for (int i = 0; i < diceValues.size(); i++){
     if (diceValues[i] == diceValues[i+1]){
-      pair = true;
+      scoringFlags.pair = true;
     }
   }
 }
@@ -199,7 +199,7 @@ for (int i = 0; i <= diceValues.size() - 4; i++) {
     if (diceValues[i + 1] == diceValues[i] + 1 &&
         diceValues[i + 2] == diceValues[i] + 2 &&
         diceValues[i + 3] == diceValues[i] + 3) {
-        smallStraight = true;
+        scoringFlags.smallStraight = true;
       }
     }
 }
@@ -211,7 +211,7 @@ void Game::isLargeStraight(vector<int> diceValues){
         diceValues[i + 2] == diceValues[i] + 2 &&
         diceValues[i + 3] == diceValues[i] + 3 &&
         diceValues[i + 4] == diceValues[i] + 4) {
-        largeStraight = true;
+        scoringFlags.largeStraight = true;
       }
   }
 }
@@ -220,7 +220,7 @@ void Game::isYahtzee(vector<int> diceValues){
   for (int i = 0; i < diceValues.size(); i++){
   if (diceValues[i] == diceValues[i + 1] && diceValues[i + 1] == diceValues[i + 2]
   && diceValues[i + 2] == diceValues[i + 3] && diceValues[i + 3] == diceValues[i + 4]){
-    Yahtzee = true;
+    scoringFlags.Yahtzee = true;
   } 
 }
 }
@@ -250,7 +250,7 @@ int Game::calculateScores(int category, vector<int> diceValues){
 
   isThreeInARow(diceValues);
 
- if (category == 7 && threeInARow) {
+ if (category == 7 && scoringFlags.threeInARow) {
     for (int i = 0; i < diceValues.size(); i++) {
         score += diceValues[i];
     }
@@ -259,7 +259,7 @@ int Game::calculateScores(int category, vector<int> diceValues){
   isFourInARow(diceValues);
 
 
-   if (category == 8 && fourInARow) {
+   if (category == 8 && scoringFlags.fourInARow) {
     for (int i = 0; i < diceValues.size(); i++) {
         score += diceValues[i];
     }
@@ -272,28 +272,28 @@ int Game::calculateScores(int category, vector<int> diceValues){
   }
  
 
-  if(category == 9 && threeInARow && pair){
+  if(category == 9 && scoringFlags.threeInARow && scoringFlags.pair){
     score = 25;
   }
 
 
   isSmallStraight(diceValues);
 
-  if (category == 10 && smallStraight){
+  if (category == 10 && scoringFlags.smallStraight){
     score = 30;
   }
 
 
   isLargeStraight(diceValues);
 
-  if (category == 11 && largeStraight){
+  if (category == 11 && scoringFlags.largeStraight){
     score = 40;
   }
 
 
   isYahtzee(diceValues);
 
-  if (category == 12 && Yahtzee){
+  if (category == 12 && scoringFlags.Yahtzee){
     score = 50;
   }
 
@@ -325,12 +325,12 @@ int Game::getTotalScore(){
 
 
 void Game::resetFlags(){
-  pair = false;
-  threeInARow = false;
-  fourInARow = false;
-  Yahtzee = false;
-  smallStraight = false;
-  largeStraight = false;
+  scoringFlags.pair = false;
+  scoringFlags.threeInARow = false;
+  scoringFlags.fourInARow = false;
+  scoringFlags.Yahtzee = false;
+  scoringFlags.smallStraight = false;
+  scoringFlags.largeStraight = false;
 }
 
 void Game::markPicked(int category){
